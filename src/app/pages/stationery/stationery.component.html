@@ -1,0 +1,57 @@
+<div class="style">
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div class = "form_container">
+      <label>Тип товара:</label>
+      <input type="text" formControlName="type">
+    </div>
+    <div class = "form_container">
+      <label>Количество:</label>
+      <input type="number" formControlName="amount">
+    </div>
+    <div class = "form_container">
+      <label>Бренд:</label>
+      <input type="text" formControlName="brand">
+    </div>
+    <div class = "form_container">
+      <label>Цвет:</label>
+      <input type="text" formControlName="color">
+    </div>
+    <div class = "form_container">
+      <label>Цена:</label>
+      <input type="number" formControlName="price">
+    </div>
+    <div class = "form_container">
+      <label>Комментарий:</label>
+      <textarea formControlName="comment"></textarea>
+    </div>
+    <button type="submit" [disabled]="!taskForm.valid" class="btn-new">Заказать</button>
+  </form>
+  
+  
+  <table class="table-bordered">
+    <thead>
+      <tr>
+        <th>Тип товара</th>
+        <th>Количество</th>
+        <th>Бренд</th>
+        <th>Цвет</th>
+        <th>Комментарий</th>
+        <th>Цена</th>
+        <th>Дата заказа</th>
+        <th>Редактировать</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let obj of stationeryList">
+        <td> {{ obj.type }}</td>
+        <td> {{ obj.amount }}</td>
+        <td> {{ obj.brand }}</td>
+        <td> {{ obj.color }}</td>
+        <td> {{ obj.comment }}</td>
+        <td> {{obj.price}}</td>
+        <td> {{ obj.orderDate | date }}</td>
+        <td> <button (click)="deleteTask(obj.id)" class="btn-delete">Удалить</button>
+          <button (click)="editTask(obj.id)" class="btn-update">Редактировать</button></td>
+      </tr>
+    </tbody>
+  </table></div>

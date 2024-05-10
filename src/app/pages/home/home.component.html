@@ -1,0 +1,70 @@
+<div>
+
+    <div class="box">
+    <p>Вход</p>
+    <div class = "form_container">
+        <label>Имя </label>
+        <input [(ngModel)]="name" />
+    </div>
+
+    <div class = "form_container">
+        <label>Номер телефона </label>
+        <input [(ngModel)]="cellNumber" />
+    </div>
+
+    <div>
+        <button (click)="logIn()" class="btn-new">Войти</button>
+    </div>
+</div>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Раздел</th>
+            <th>Продукт</th>
+            <th>Количество</th>
+            <th>Бренд/Издательство</th>
+            <th>Цена</th>
+            <th>Комментарий</th>
+            <th>Удалить</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let obj of booksList">
+            <td>Книги</td>
+            <td> {{ obj.genre }}</td>
+            <td> {{ obj.amount }}</td>
+            <td> {{ obj.publishingHouse }}</td>
+            <td> {{ obj.price }}</td>
+            <td> {{ obj.comment }}</td>
+            <td> <button (click)="delete(obj.id, 0)" class="btn-delete">Удалить</button></td>
+        </tr>
+
+        <tr *ngFor="let obj of hobbiesList">
+            <td>хобби</td>
+            <td>{{ obj.type }}</td>
+            <td> {{ obj.amount }}</td>
+            <td> {{ obj.brand }}</td>
+            <td> {{obj.price}}</td>
+            <td> {{ obj.comment }}</td>
+            <td> <button (click)="delete(obj.id, 1)" class="btn-delete">Удалить</button></td>
+        </tr>
+
+        <tr *ngFor="let obj of stationeryList">
+            <td>Канцтовары</td>
+            <td>{{ obj.type }}</td>
+            <td> {{ obj.amount }}</td>
+            <td> {{ obj.brand }}</td>
+            <td> {{obj.price}}</td>
+            <td> {{ obj.comment }}</td>
+            <td> <button (click)="delete(obj.id, 2)" class="btn-new1" class="btn-delete">Удалить</button></td>
+        </tr>
+
+        <tr>
+            <td colspan="7">Итого: {{ this.sum }}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
